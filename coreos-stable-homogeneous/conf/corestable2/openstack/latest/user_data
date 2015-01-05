@@ -1,0 +1,17 @@
+#cloud-config
+
+users:
+ - name: core
+   ssh-authorized-keys:
+     - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDUWGL/a6kV8A3mvIRdjVI4sruysxx1uIvOf7/mWtiWJnbcBthWUb+Flh20+jWTxq2MJFx9h2OtbDkXqhHy+qh2+U75KGh4ZVu0/Wkq0iHryT6mMy34LV3B+Ro91uBJPuCjhoPNXXp4e6DwF8eIZltwZPVJn0b7GmIopkesc1Ot6Ev7QQqQ+kqBHBs2Q8uFUC6T9nIIFvJf/iV+NYtnJbdoqq8rBKJoTYo9fbxOYdeuJxOtJl4YpSfMvbOwaGZVB++4wUEtHXd0G0qDqX8Ha7Q1+bA3DuD3qgZRbqZQfKmu0vY2zZyP4z3F8XC6I3uaVt4S1dGpxzWUdIkDMmCcVu0x peter@genbeast
+
+coreos:
+  etcd:
+    discovery: https://discovery.etcd.io/f21a2850f1b55ecee86e5ad9e36aabf1
+    addr: "192.168.1.34:4001"
+    peer-addr: "192.168.1.34:7001"
+  units:
+    - name: etcd.service
+      command: start
+    - name: fleet.service
+      command: start

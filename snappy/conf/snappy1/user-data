@@ -1,0 +1,6 @@
+#cloud-config
+
+snappy:
+  ssh_enabled: True
+
+
